@@ -33,9 +33,9 @@ int main(){
         cin >> player_first_input;
         cout << endl;
         if (player_first_input == "first"){
-            bool player_first = true;
+            player_first = true;
         } else if (player_first_input == "second"){
-            bool player_first = false;
+            player_first = false;
         } else {
             cout << "Invalid input." << endl;
             return 0;
@@ -87,7 +87,7 @@ int main(){
             numCounters -= numCountersTaken;
         } else {
             // Determine if it is the AI's turn or the player's turn depending on who goes first
-            if ((player_first && player1Turn) || (!player_first && !player1Turn)){
+            if ((player_first and player1Turn) || (!player_first and !player1Turn)){
                 // If it is the player's turn
                 cout << "Humans turn. Please select either 1, 2 or 3 counters." << endl;
                 int numCountersTaken;
@@ -106,14 +106,16 @@ int main(){
                         cout << "The AI took 3 counters." << endl;
                         numCounters -= 3;
                     } else if (numCounters % 4 == 1){
+                        // Take a random number of counters
+                        int numCountersTaken = rand() % 3 + 1;
+                        cout << "The AI took " << numCountersTaken << " counters." << endl;
+                        numCounters -= numCountersTaken;
+                    } else if (numCounters % 4 == 2){
                         cout << "The AI took 1 counters." << endl;
                         numCounters -= 1;
-                    } else if (numCounters % 4 == 2){
+                    } else if (numCounters % 4 == 3){
                         cout << "The AI took 2 counters." << endl;
                         numCounters -= 2;
-                    } else if (numCounters % 4 == 3){
-                        cout << "The AI took 3 counters." << endl;
-                        numCounters -= 3;
                     }
                 } else {
                     // If the AI is dumb, pick a random number between 1 and 3
@@ -135,9 +137,9 @@ int main(){
         } else if (numCounters <= 0 && against_AI){
             gameOver = true;
             if (player_first && player1Turn){
-                cout << "The AI wins!" << endl;
+                cout << "AI win's!" << endl;
             } else if (!player_first && !player1Turn){
-                cout << "The AI wins!" << endl;
+                cout << "AI win's!" << endl;
             } else {
                 cout << "You win!" << endl;
             }

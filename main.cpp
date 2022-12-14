@@ -64,7 +64,7 @@ int main(){
     bool gameOver = false;
     while (!gameOver){
         // Print number of counters
-        cout << "There are " << numCounters << " counters left." << endl;
+        cout << "\n\nThere are " << numCounters << " counters left." << endl;
 
         // If it is a human's turn (not an AI turn)
         if (not against_AI){
